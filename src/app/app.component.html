@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="header">
+      <div class="clear">
+          <i class="fa fa-refresh"></i>
+      </div>
+      <div id="date">{{date}}</div>
+  </div>
+  <div class="content">
+      <ul id="list" *ngFor="let task of taskList; let i = index">
+        <li class="item">
+            <i class="fa {{task.undone}} co" job="complete" id={{i}} (click)="taskDone(i)"></i>
+            <p *ngIf="!task.edit" class="text {{task.line}}">{{task.name}}</p>
+            <input *ngIf="task.edit" type="text" id="editinput" placeholder="edit your task" #editinput (keyup.enter)="editNewTask(editinput.value,i)">
+            <i class="fa fa-pencil" job="edit" id={{i}} (click)="editTask(i)"></i>
+            <i class="fa fa-trash-o de" job="delete" id={{i}} (click)="deleteTask(i)"></i>
+          </li>
+      </ul>
+  </div>
+  <div class="add-to-do">
+      <i class="fa fa-plus-circle"></i>
+      <input type="text" id="input" placeholder="Add a to-do" #box (keyup.enter)="addTask(box.value)">
+  </div>
+</div>
